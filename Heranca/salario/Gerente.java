@@ -1,4 +1,3 @@
-package Heranca.salario;
 
 public class Gerente extends Empregado {
 
