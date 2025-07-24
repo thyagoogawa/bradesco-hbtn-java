@@ -1,3 +1,4 @@
+package Heranca_Exercicios.pedido_livraria;
 
 import produtos.Produto;
 
@@ -7,7 +8,7 @@ public class ItemPedido {
     private int quantidade;
 
     public ItemPedido(Produto produto, int quantidade) {
-        
+
     }
 
     public Produto getProduto() {
