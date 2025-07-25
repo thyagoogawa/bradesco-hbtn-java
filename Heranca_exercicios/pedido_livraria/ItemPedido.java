@@ -1,5 +1,3 @@
-package Heranca_Exercicios.pedido_livraria;
-
 import produtos.Produto;
 
 public class ItemPedido {

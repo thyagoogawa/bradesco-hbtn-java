@@ -1,6 +1,6 @@
-package Heranca_Exercicios.pedido_livraria;
-
 import produtos.Produto;
+import produtos.Livro;
+import produtos.Dvd;
 
 public class Pedido {
 
@@ -40,4 +40,3 @@ public class Pedido {
     }
 
 }
-

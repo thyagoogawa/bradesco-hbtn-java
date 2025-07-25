@@ -1,6 +1,7 @@
-package Heranca_Exercicios.pedido_livraria;
+import produtos.Dvd;
+import produtos.Livro;
 
-import java.util.*;
+import java.util.Locale;
 public class Program {
     public static void main(String[] args) {
         Locale.setDefault(new Locale("pt", "BR"));
