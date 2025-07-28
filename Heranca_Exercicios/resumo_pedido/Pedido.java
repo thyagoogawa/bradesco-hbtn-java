@@ -14,14 +14,8 @@ public class Pedido {
     }
 
     public double calcularTotal() {
-        double soma = 0;
-        for (int i = 0; i < itensPedido.length; i++) {
-            ItemPedido itemPedido = itensPedido[i];
-            Produto produto = itemPedido.getProduto();
-            soma = soma + (produto.obterPrecoLiquido() * itemPedido.getQuantidade());
-        }
-        percentualDesconto = percentualDesconto / 100;
-        return soma - (soma * percentualDesconto);
+        double totalSemDesconto = calcularTotalSemDesconto();
+        return totalSemDesconto - calcularValorDesconto(totalSemDesconto);
     }
 
     public double calcularTotalSemDesconto() {
@@ -34,9 +28,9 @@ public class Pedido {
         return soma;
     }
     
-    public double calcularDesconto(double total) {
-        percentualDesconto = percentualDesconto / 100;
-        return total - (total * percentualDesconto);
+    public double calcularValorDesconto(double total) {
+        double percentualDescontoEmDecimal = percentualDesconto / 100;
+        return total * percentualDescontoEmDecimal;
     }
     
     public void apresentarResumoPedido() {
@@ -47,7 +41,7 @@ public class Pedido {
         }
         
         System.out.printf(new Locale("pt","BR"), "----------------------------\n");
-        System.out.printf(new Locale("pt","BR"), "DESCONTO: %.2f\n", calcularDesconto(calcularTotalSemDesconto()));
+        System.out.printf(new Locale("pt","BR"), "DESCONTO: %.2f\n", calcularValorDesconto(calcularTotalSemDesconto()));
         System.out.printf(new Locale("pt","BR"), "TOTAL PRODUTOS: %.2f\n", calcularTotalSemDesconto());
         System.out.printf(new Locale("pt","BR"), "----------------------------\n");
         System.out.printf(new Locale("pt","BR"), "TOTAL PEDIDO: %.2f\n", calcularTotal());
