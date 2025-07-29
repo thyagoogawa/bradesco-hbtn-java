@@ -4,7 +4,7 @@ public class MaquinaWorkflow {
 
     void executar(Workflow workflowEncodificarVideos) {
         for (Atividade atividade : workflowEncodificarVideos.getListaAtividades()) {
-            atividade.executar();
+            atividade.executar(); // Exemplo de polimorfismo
         }
     }
 

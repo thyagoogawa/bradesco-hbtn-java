@@ -1,0 +1,1 @@
+Exemplo de polimorfismo com interface.
