@@ -1,4 +1,5 @@
 import exceptions.OperacaoInvalidaException;
+import java.lang.Math;
 
 public class ContaBancariaBasica {
 
@@ -6,10 +7,10 @@ public class ContaBancariaBasica {
     private double saldo;
     private double taxaJurosAnual;
 
-    public ContaBancariaBasica(String numeracao, double saldo) {
+    public ContaBancariaBasica(String numeracao, double taxaJurosAnual) {
         this.numeracao = numeracao;
-        this.saldo = saldo;
-        this.taxaJurosAnual = 0;
+        this.taxaJurosAnual = taxaJurosAnual;
+        this.saldo = 0;
     }
 
     void depositar(double valor) throws OperacaoInvalidaException {
@@ -30,27 +31,30 @@ public class ContaBancariaBasica {
     }
 
     double calcularTarifaMensal() {
-        double tarifaMensal = 0;
+        double tarifaMensal = 10.00;
         double decimaParteDoSaldo = saldo * 0.1;
         
         if (decimaParteDoSaldo < 10.00) {
             tarifaMensal = decimaParteDoSaldo;
-        } else {
-            tarifaMensal = 10.00;
         }
 
         return tarifaMensal;
     }
 
     double calcularJurosMensal() {
-        double taxaJuros = 0;
-        double valorJuros = 0;
+
+        double taxaJurosAnualPercent = taxaJurosAnual / 100.00000;
+        double taxaJurosMensalPercent = 0;
 
         if (saldo > 0) {
+            taxaJurosMensalPercent = taxaJurosAnualPercent / 12.00000;
+        } 
 
-        }
+        return saldo * taxaJurosMensalPercent;
+    }
 
-        return taxaJuros;
+    void aplicarAtualizacaoMensal() {
+        saldo = saldo - calcularTarifaMensal() + calcularJurosMensal();
     }
 
     public String getNumeracao() {
