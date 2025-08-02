@@ -1,5 +1,4 @@
 import exceptions.OperacaoInvalidaException;
-import java.lang.Math;
 
 public class ContaBancariaBasica {
 
