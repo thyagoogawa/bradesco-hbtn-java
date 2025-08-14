@@ -20,9 +20,16 @@ public class FileWritingExercise {
             System.out.println("Digite novas linhas. Para fechar e salvar, digite 'sair' e tecle Enter :");
             String linha = "";
 
-            while( !linha.contains("sair")) {
+            //while( !linha.contains("sair")) {
+            //    linha = scanner.nextLine();
+            //    fileWriter.write(linha + "\n");
+            //}
+
+            while(true) {
                 linha = scanner.nextLine();
                 fileWriter.write(linha + "\n");
+                if (linha.contains("sair"))
+                    break;
             }
 
         } catch (IOException e) {
