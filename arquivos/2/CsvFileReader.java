@@ -10,7 +10,6 @@ public class CsvFileReader {
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             
             String linha = bufferedReader.readLine(); // lé a linha do cabeçalho
-            linha = bufferedReader.readLine(); // lé a primeira linha
 
             while(linha != null){
                 String[] colunas = linha.split(",");
