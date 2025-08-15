@@ -27,5 +27,7 @@ public class CsvFileReader {
             ex.printStackTrace();
         }
 
+        System.out.println("Leitura do arquivo concluída.");
+
     }
 }
