@@ -52,7 +52,7 @@ public class Estoque {
 
         reescreverArquivoComListaAtualizada(produtos);
 
-        System.out.println("Produto adicionado com sucesso!");
+        //System.out.println("Produto adicionado com sucesso!");
 
     }
 
@@ -84,13 +84,13 @@ public class Estoque {
                 idExiste = true;
                 produtos.remove(produto);
                 reescreverArquivoComListaAtualizada(produtos);
-                System.out.println("Produto excluído com sucesso!\n");
+                //System.out.println("Produto excluído com sucesso!\n");
                 break;
             }
         }
 
         if ( !idExiste) {
-            System.out.println("O id fornecido não existe.\n");
+            //System.out.println("O id fornecido não existe.\n");
         }
     }
 
@@ -110,7 +110,7 @@ public class Estoque {
 
         reescreverArquivoComListaAtualizada(produtos);
 
-        System.out.println("Quantidade atualizada com sucesso!\n");
+        //System.out.println("Quantidade atualizada com sucesso!\n");
 
     }
 
