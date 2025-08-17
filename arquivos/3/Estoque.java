@@ -96,7 +96,7 @@ public class Estoque {
 
     public void exibirEstoque() {
         lerArquivo(true);
-        System.out.println("--------");
+        //System.out.println("--------");
     }
 
     public void atualizarQuantidade(int idAtualizar, int novaQuantidade) {
