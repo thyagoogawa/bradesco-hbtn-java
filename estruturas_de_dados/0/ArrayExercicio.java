@@ -1,10 +1,12 @@
 import java.util.Scanner;
-
+import java.util.Locale;
 
 public class ArrayExercicio {
 
 
     public static void main(String[] args) {
+        Locale.setDefault(new Locale("pt", "BR"));
+
         // Criando o scanner para entrada de dados
         Scanner scanner = new Scanner(System.in);
 
