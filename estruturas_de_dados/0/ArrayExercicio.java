@@ -1,11 +1,10 @@
 import java.util.Scanner;
-import java.util.Locale;
+
 
 public class ArrayExercicio {
 
 
     public static void main(String[] args) {
-        Locale.setDefault(new Locale("pt", "BR"));
 
         // Criando o scanner para entrada de dados
         Scanner scanner = new Scanner(System.in);
@@ -22,9 +21,7 @@ public class ArrayExercicio {
         // Utilize scanner.nextInt(); para receber o numero digitado
         System.out.println("Digite 10 números inteiros:");
 
-        int i = 0;
-
-        while (i < 10) {
+        for (int i = 0; i < 10; i++) {
             int nomeNumero = i + 1;
             System.out.println("Digite o número " + nomeNumero + ": ");
             numeros[i] = scanner.nextInt();
