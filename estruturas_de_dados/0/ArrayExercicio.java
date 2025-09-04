@@ -33,7 +33,7 @@ public class ArrayExercicio {
 
         for (int a = 0; a < numeros.length; a++) {
             conteudoArray = conteudoArray + numeros[a] + " ";
-            soma = soma + numeros[a];
+            soma += numeros[a];
 
             if (maiorNumero < numeros[a]) {
                 maiorNumero = numeros[a];
