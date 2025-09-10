@@ -1,4 +1,4 @@
-public class PessoasArray throws Exception {
+public class PessoasArray {
 
     private String[] nomes;
 
@@ -18,7 +18,7 @@ public class PessoasArray throws Exception {
     }
 
     // implementar o método de pesquisaConstante
-    public void pesquisaTempoConstante(int id){
+    public void pesquisaTempoConstante(int id) throws Exception {
         System.out.println("Nome pesquisado é " + nomes[id] + " que está na posição " + id);
     }
 }
