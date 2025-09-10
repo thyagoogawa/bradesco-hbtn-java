@@ -1,4 +1,4 @@
-public class PessoasArray {
+public class PessoasArray throws Exception {
 
     private String[] nomes;
 
