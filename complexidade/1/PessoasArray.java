@@ -19,12 +19,15 @@ public class PessoasArray {
 
     // implementar o método de buscaLinear
     public void buscaLinear(String nome){
+        
         System.out.println("Procurando pelo nome: \"" + nome + "\"");
 
         boolean encontrado = false;
+        
         int indiceAtual = 0;
 
         while (true) {
+
             if (indiceAtual == nomes.length && !encontrado) {
                 throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
             }
