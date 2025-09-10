@@ -34,7 +34,7 @@ public class PessoasArray {
             }
 
             System.out.println("Passando pelo indice:" + indiceAtual);
-            if (nome.compareTo(nomes[indiceAtual]) == 0) {
+            if (nome.equals(nomes[indiceAtual])) {
                 encontrado = true;
                 System.out.println("Nome pesquisado é " + nome + " que está na posição " + indiceAtual);
             }
