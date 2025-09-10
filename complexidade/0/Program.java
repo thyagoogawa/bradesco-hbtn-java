@@ -1,6 +1,6 @@
 public class Program {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         PessoasArray p = new PessoasArray();
         p.pesquisaTempoConstante(2);
         p.pesquisaTempoConstante(7);
