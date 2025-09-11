@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 public class Blog {
 
-    List<Post> posts = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
 
     public void adicionarPostagem(Post post) { 
         // recebe uma postagem e adiciona a lista de postagens.
@@ -42,7 +42,7 @@ public class Blog {
 
             if ( !postagensPorCategoria.containsKey(categoria)) {
                 postagensPorCategoria.put(categoria, 1);
-                
+
             } else {
                 postagens = postagensPorCategoria.get(categoria) + 1;
                 postagensPorCategoria.put(categoria, postagens) ;
