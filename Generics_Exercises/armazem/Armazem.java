@@ -1,15 +1,18 @@
-public class Armazem <T> implements Armazenavel {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Armazem<T> implements Armazenavel<T> {
+
+    Map<String, T> items = new HashMap<>();
 
     @Override
-    public void adicionarAoInventario(String nome, Object valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'adicionarAoInventario'");
+    public void adicionarAoInventario(String nome, T valor) {
+        items.put(nome, valor);
     }
 
     @Override
-    public Object obterDoInventario(String nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obterDoInventario'");
+    public T obterDoInventario(String nome) {
+        return items.get(nome);
     }
     
 }
