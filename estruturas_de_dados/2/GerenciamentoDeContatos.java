@@ -31,6 +31,7 @@ public class GerenciamentoDeContatos {
     // Exibe todos os contatos
     public void exibirContatos() {
         
+        // Iteração no Map com for
         /* 
         for (Map.Entry<String, Contato> entry : contatos.entrySet()) {
             System.out.println("Nome: " + entry.getKey());
@@ -39,6 +40,7 @@ public class GerenciamentoDeContatos {
         }
         */
 
+        // Iteração no Map com forEach e arrow function
         contatos.forEach( (nome, contato) -> {
             System.out.println("Nome: " + nome);
             contato.exibirContato();
