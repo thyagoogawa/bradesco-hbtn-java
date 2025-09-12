@@ -63,7 +63,7 @@ public class Program {
         Map<Categorias, Integer> contagem = blog1.obterContagemPorCategoria();
 
         System.out.println(contagem);
-/* 
+ 
         Set<Post> postsDevOps = blog1.obterPostsPorCategoria(Categorias.DEVOPS);
 
         System.out.println(postsDevOps);
@@ -74,18 +74,18 @@ public class Program {
 
         Set<Post> postsData = blog1.obterPostsPorCategoria(Categorias.DATA_SCIENCE);
 
-        System.out.println(postsData); */
+        System.out.println(postsData); 
 
         Set<Post> postsJaneDoe = blog1.obterPostsPorAutor(new Autor("Jane", "Doe"));
 
         System.out.println(postsJaneDoe);      
-/* 
+  
         Map<Categorias, Set<Post>> postsPorCategoria = blog1.obterTodosPostsPorCategorias();
 
         System.out.println(postsPorCategoria);
 
         Map<Autor, Set<Post>> postsPorAutor = blog1.obterTodosPostsPorAutor();
 
-        System.out.println(postsPorAutor);        */
+        System.out.println(postsPorAutor);
     }
 }

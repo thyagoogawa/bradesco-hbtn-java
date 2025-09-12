@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -56,8 +54,6 @@ public class Blog {
         return postagensPorCategoria;
     }
 
-    /*  recebe um autor como parâmetro e retorna um Set de posts daquele autor, 
-        deve-se retornar os posts ordenados pelo título */
     public Set<Post> obterPostsPorAutor(Autor autor) {
         Set<Post> sortedPosts = new TreeSet<>(Comparator.comparing(Post::getTitulo));
         
@@ -70,4 +66,45 @@ public class Blog {
 
         return sortedPosts;
     }
+
+    public Set<Post> obterPostsPorCategoria(Categorias categoria) {
+        Set<Post> sortedPosts = new TreeSet<>(Comparator.comparing(Post::getTitulo));
+
+        for (Post post : posts) {
+            if (post.getCategoria().equals(categoria)) {
+                sortedPosts.add(post);
+            }
+        }
+
+        return sortedPosts;
+    }
+
+    public Map<Categorias, Set<Post>> obterTodosPostsPorCategorias() {
+
+        Map<Categorias, Set<Post>> mapPostsPorCategorias = new HashMap<>();
+        List<Categorias> categorias = Categorias.getCategorias();
+
+        for (Categorias categoria : categorias) {
+            Set<Post> postsPorCategoria = obterPostsPorCategoria(categoria);
+            mapPostsPorCategorias.put(categoria, postsPorCategoria);
+        }
+
+        return mapPostsPorCategorias;
+    }
+
+    /* retorne uma Map que a chave seja Autor e o valor seja um Set com todos posts 
+       daquela categoria */
+    public Map<Autor, Set<Post>> obterTodosPostsPorAutor() {
+        
+        Map<Autor, Set<Post>> mapPostsPorAutor = new HashMap<>();
+        Set<Autor> autores = obterTodosAutores();
+
+        for (Autor autor : autores) {
+            Set<Post> postsPorAutor = obterPostsPorAutor(autor);
+            mapPostsPorAutor.put(autor, postsPorAutor);
+        }
+
+        return mapPostsPorAutor;
+    }
+
 }
