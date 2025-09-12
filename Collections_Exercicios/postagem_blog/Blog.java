@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,9 +34,8 @@ public class Blog {
 
     public Map<Categorias, Integer> obterContagemPorCategoria() { 
  
-        Map<Categorias, Integer> postagensPorCategoria = new HashMap<>();
-        // postagens por categoria na ordem que o checker espera:
-        Map<Categorias, Integer> postagensPorCategoriaOrdenado = new HashMap<>();
+        // O LinkedHashMap é ordenado pela ordem de inserção, pois ele utiliza a Double Linked List
+        Map<Categorias, Integer> postagensPorCategoria = new LinkedHashMap<>(); 
 
         int postagens;
 
@@ -53,19 +53,7 @@ public class Blog {
 
         }
 
-        Integer postagensDataScience = postagensPorCategoria.get(Categorias.DATA_SCIENCE);
-        Integer postagensDesenvolvimento = postagensPorCategoria.get(Categorias.DESENVOLVIMENTO);
-        Integer postagensDevops = postagensPorCategoria.get(Categorias.DEVOPS);
-        
-        postagensPorCategoriaOrdenado.put(Categorias.DATA_SCIENCE, postagensDataScience);
-        postagensPorCategoriaOrdenado.put(Categorias.DESENVOLVIMENTO, postagensDesenvolvimento);
-        postagensPorCategoriaOrdenado.put(Categorias.DEVOPS, postagensDevops);
-
-        return postagensPorCategoriaOrdenado; 
-                                      // O que é incluído por último no Map fica por 
-                                      // primeiro na listagem, e os outros vão ficando para trás.
-                                      // Isso só vale quando roda em modo debug.
-                                      // Quando roda normal a ordem é aleatória.
+        return postagensPorCategoria;
     }
 
     public Set<Post> obterPostsPorAutor(Autor autor) {
