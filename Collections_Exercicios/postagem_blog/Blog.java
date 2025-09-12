@@ -51,7 +51,10 @@ public class Blog {
 
         }
 
-        return postagensPorCategoria;
+        return postagensPorCategoria; // O que é incluído por último no Map fica por 
+                                      // primeiro na listagem, e os outros vão ficando para trás.
+                                      // Isso só vale quando roda em modo debug.
+                                      // Quando roda normal a ordem é aleatória.
     }
 
     public Set<Post> obterPostsPorAutor(Autor autor) {
@@ -92,10 +95,8 @@ public class Blog {
         return mapPostsPorCategorias;
     }
 
-    /* retorne uma Map que a chave seja Autor e o valor seja um Set com todos posts 
-       daquela categoria */
     public Map<Autor, Set<Post>> obterTodosPostsPorAutor() {
-        
+
         Map<Autor, Set<Post>> mapPostsPorAutor = new HashMap<>();
         Set<Autor> autores = obterTodosAutores();
 

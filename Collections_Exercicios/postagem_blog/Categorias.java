@@ -12,8 +12,8 @@ public enum Categorias {
         for (Categorias categoria : Categorias.values()) {
             categorias.add(categoria);
         }
+        return categorias; // Retorna na ordem que foi definida aqui
 
-        return categorias;
     }
 
 }
