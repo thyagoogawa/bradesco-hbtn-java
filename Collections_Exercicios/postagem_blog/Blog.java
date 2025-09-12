@@ -57,9 +57,9 @@ public class Blog {
         Integer postagensDesenvolvimento = postagensPorCategoria.get(Categorias.DESENVOLVIMENTO);
         Integer postagensDevops = postagensPorCategoria.get(Categorias.DEVOPS);
         
+        postagensPorCategoriaOrdenado.put(Categorias.DEVOPS, postagensDevops);
         postagensPorCategoriaOrdenado.put(Categorias.DATA_SCIENCE, postagensDataScience);
         postagensPorCategoriaOrdenado.put(Categorias.DESENVOLVIMENTO, postagensDesenvolvimento);
-        postagensPorCategoriaOrdenado.put(Categorias.DEVOPS, postagensDevops);
 
         return postagensPorCategoriaOrdenado; 
                                       // O que é incluído por último no Map fica por 
