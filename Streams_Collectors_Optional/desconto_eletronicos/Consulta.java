@@ -60,10 +60,11 @@ public class Consulta {
 
     /*  
      * Versao 2, nao altera a ordem da lista, usa ternario com Produto.setPrecoGetProduto(preco).
-     * Altera o produto original.
+     * Faz uma copia dos elementos da origem para nao alterar o produto da origem.
      * */
     public static List<Produto> aplicar15PorcentoDescontoEletronicos(List<Produto> produtos) {
-        return produtos.stream()
+        List<Produto> produtosCopy = produtos;
+        return produtosCopy.stream()
                 .map(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO) ? 
                         p.setPrecoGetProduto(p.getPreco() * 0.85) : 
                         p)
@@ -72,18 +73,20 @@ public class Consulta {
 
     /*
      * Versao 3: nao altera a ordem da lista. Eh a forma mais simples e astuta de iterar numa lista,
-     * fazer alteracoes nela e retornar ela mesma. Mas altera o produto original.
+     * fazer alteracoes nela e retornar ela mesma. Faz uma copia dos elementos da origem para nao 
+     * alterar o produto da origem.
      */
     public static List<Produto> aplicar15PorcentoDescontoEletronicosV3(List<Produto> produtos) {
-        produtos.stream()
+        List<Produto> produtosCopy = produtos;
+        produtosCopy.stream()
                 .filter(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO))
                 .forEach(p -> p.setPreco(p.getPreco() * 0.85));
-        return produtos;
+        return produtosCopy;
     }
 
     /* 
      * Versao 4: nao altera a ordem da lista, usa if dentro do map, cria novo produto para nao
-     * alterar o original, pois o stream, por padrao, nao altera os elementos da origem.
+     * alterar o original, pois o stream, por padrao, nao deve alterar os elementos da origem.
      */
     public static List<Produto> aplicar15PorcentoDescontoEletronicosV4(List<Produto> produtos) {
         return produtos.stream()
