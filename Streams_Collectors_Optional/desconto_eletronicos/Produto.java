@@ -34,6 +34,9 @@ public class Produto {
         this.preco = preco;
     }
 
+    /* Se o stream usar esse metodo, o elemento da origem sera alterado e isso ira gerar uma quebra
+     * de contrato com o stream, pois ele, por padrao, nao altera os elementos da origem.
+     */
     public Produto setPrecoGetProduto(double preco) {
         this.preco = preco;
         return this;

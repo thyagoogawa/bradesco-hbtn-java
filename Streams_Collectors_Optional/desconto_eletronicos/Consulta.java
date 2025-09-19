@@ -6,64 +6,44 @@ import java.util.stream.Stream;
 public class Consulta {
     
     public static List<Produto> obterLivrosDoPedido(Pedido pedido) {
-
-        List<Produto> produtosFiltrados = pedido.getProdutos().stream()
+        return pedido.getProdutos().stream()
                 .filter(p -> p.getCategoriaProduto().equals(CategoriaProduto.LIVRO))
                 .collect(Collectors.toList());
-
-        return produtosFiltrados;    
     }
 
     // Versao 1:
     public static Produto obterProdutoMaiorPreco(List<Produto> produtos) {
-        Produto produto = produtos.stream()
+        return produtos.stream()
                 .sorted(Comparator.comparing(Produto::getPreco).reversed())
                 .findFirst()
                 .get();
-
-        return produto;
     }
 
     // Versao 2:
     public static Produto obterProdutoMaiorPrecoV2(List<Produto> produtos) {
-        Produto produto = produtos.stream()
+        return produtos.stream()
                 .max(Comparator.comparing(p -> p.getPreco()))
                 .get();
-
-        return produto;
     }
 
     public static List<Produto> obterProdutosPorPrecoMinimo(List<Produto> produtos, double precoMinimo) {
-        
-        List<Produto> produtosFiltrados = produtos.stream()
+        return produtos.stream()
                 .filter(p -> p.getPreco() >= precoMinimo)
                 .collect(Collectors.toList());
-        
-        return produtosFiltrados;
     }
 
     public static List<Pedido> obterPedidosComEletronicos(List<Pedido> pedidos) {
-
-        List<Pedido> pedidosComEletronicos = pedidos
+        return pedidos
                 .stream()
                 .filter(pedido -> pedido.getProdutos()
                         .stream()
-                        .anyMatch(produto -> produto.getCategoriaProduto()
-                                .equals(CategoriaProduto.ELETRONICO)))
+                        .anyMatch(produto -> produto.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO)))
                 .collect(Collectors.toList());
-
-        return pedidosComEletronicos;
     }
 
-    /*
-    aplicar15PorcentoDescontoEletronicos na classe Consulta que recebe uma lista de produtos 
-    e retorna todos os produtos, porem os produtos que sejam eletronicos deve estar com 
-    15% de desconto aplicado no preco.
-
-    DICA: Utilizar map
-    */
-
-    // Versao 1, altera a ordem da lista: 
+    /*  
+     * Versao 1, altera a ordem da lista: 
+     */
     public static List<Produto> aplicar15PorcentoDescontoEletronicosV1(List<Produto> produtos) {
         Stream<Produto> streamProdutosTransformados = produtos.stream()
                 .filter(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO))
@@ -74,21 +54,47 @@ public class Consulta {
 
         Stream<Produto> streamResultante = Stream.concat(streamProdutosTransformados, streamProdutos);
 
-        List<Produto> produtosTransformados = streamResultante
+        return streamResultante
                 .collect(Collectors.toList());
-
-        return produtosTransformados;
     }
 
-    // Versao 2, nao altera a ordem da lista:
+    /*  
+     * Versao 2, nao altera a ordem da lista, usa ternario com Produto.setPrecoGetProduto(preco).
+     * Altera o produto original.
+     * */
     public static List<Produto> aplicar15PorcentoDescontoEletronicos(List<Produto> produtos) {
-        List<Produto> produtosTransformados = produtos.stream()
+        return produtos.stream()
                 .map(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO) ? 
                         p.setPrecoGetProduto(p.getPreco() * 0.85) : 
                         p)
                 .collect(Collectors.toList());
-
-        return produtosTransformados;
     }
 
+    /* 
+     * Versao 3: nao altera a ordem da lista, usa if dentro do map, cria novo produto para nao
+     * alterar o original, pois o stream, por padrao, nao altera os elementos da origem.
+     */
+    public static List<Produto> aplicar15PorcentoDescontoEletronicosV3(List<Produto> produtos) {
+        return produtos.stream()
+                .map(p -> {
+                    if (p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO)) {
+                        double novoPreco = p.getPreco() * 0.85;
+                        return new Produto(p.getCodigo(), p.getNome(), p.getCategoriaProduto(), novoPreco);
+                    } else {
+                        return p;
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
+    /*
+     * Versao 4: eh a versao 2 melhorada. Nao altera o produto original.
+     */
+    public static List<Produto> aplicar15PorcentoDescontoEletronicosV4(List<Produto> produtos) {
+        return produtos.stream()
+                .map(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO) ? 
+                        new Produto(p.getCodigo(), p.getNome(), p.getCategoriaProduto(), p.getPreco() * 0.85) : 
+                        p)
+                .collect(Collectors.toList());
+    }
 }
