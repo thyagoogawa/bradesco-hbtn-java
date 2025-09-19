@@ -29,10 +29,10 @@ public class Program {
         Pedido pedido3 = new Pedido(3, List.of(produto4, produto6, produto5), cliente3);
         Pedido pedido4 = new Pedido(4, List.of(produto6, produto1, produto5), cliente3);
 
-        List<Produto> produtosPedido1 = Consulta.aplicar15PorcentoDescontoEletronicosV4(pedido1.getProdutos());
-        List<Produto> produtosPedido2 = Consulta.aplicar15PorcentoDescontoEletronicosV4(pedido2.getProdutos());
-        List<Produto> produtosPedido3 = Consulta.aplicar15PorcentoDescontoEletronicosV4(pedido3.getProdutos());        
-        List<Produto> produtosPedido4 = Consulta.aplicar15PorcentoDescontoEletronicosV4(pedido4.getProdutos());        
+        List<Produto> produtosPedido1 = Consulta.aplicar15PorcentoDescontoEletronicosV5(pedido1.getProdutos());
+        List<Produto> produtosPedido2 = Consulta.aplicar15PorcentoDescontoEletronicosV5(pedido2.getProdutos());
+        List<Produto> produtosPedido3 = Consulta.aplicar15PorcentoDescontoEletronicosV5(pedido3.getProdutos());        
+        List<Produto> produtosPedido4 = Consulta.aplicar15PorcentoDescontoEletronicosV5(pedido4.getProdutos());        
 
         System.out.println(produtosPedido1);
         System.out.println(produtosPedido2);

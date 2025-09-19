@@ -42,7 +42,7 @@ public class Consulta {
     }
 
     /*  
-     * Versao 1, altera a ordem da lista: 
+     * Versao 1, altera a ordem da lista, altera o produto na origem
      */
     public static List<Produto> aplicar15PorcentoDescontoEletronicosV1(List<Produto> produtos) {
         Stream<Produto> streamProdutosTransformados = produtos.stream()
@@ -70,11 +70,22 @@ public class Consulta {
                 .collect(Collectors.toList());
     }
 
-    /* 
-     * Versao 3: nao altera a ordem da lista, usa if dentro do map, cria novo produto para nao
-     * alterar o original, pois o stream, por padrao, nao altera os elementos da origem.
+    /*
+     * Versao 3: nao altera a ordem da lista. Eh a forma mais simples e astuta de iterar numa lista,
+     * fazer alteracoes nela e retornar ela mesma. Mas altera o produto original.
      */
     public static List<Produto> aplicar15PorcentoDescontoEletronicosV3(List<Produto> produtos) {
+        produtos.stream()
+                .filter(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO))
+                .forEach(p -> p.setPreco(p.getPreco() * 0.85));
+        return produtos;
+    }
+
+    /* 
+     * Versao 4: nao altera a ordem da lista, usa if dentro do map, cria novo produto para nao
+     * alterar o original, pois o stream, por padrao, nao altera os elementos da origem.
+     */
+    public static List<Produto> aplicar15PorcentoDescontoEletronicosV4(List<Produto> produtos) {
         return produtos.stream()
                 .map(p -> {
                     if (p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO)) {
@@ -88,13 +99,14 @@ public class Consulta {
     }
 
     /*
-     * Versao 4: eh a versao 2 melhorada. Nao altera o produto original.
+     * Versao 5: eh a versao 2 melhorada. Nao altera o produto original.
      */
-    public static List<Produto> aplicar15PorcentoDescontoEletronicosV4(List<Produto> produtos) {
+    public static List<Produto> aplicar15PorcentoDescontoEletronicosV5(List<Produto> produtos) {
         return produtos.stream()
                 .map(p -> p.getCategoriaProduto().equals(CategoriaProduto.ELETRONICO) ? 
                         new Produto(p.getCodigo(), p.getNome(), p.getCategoriaProduto(), p.getPreco() * 0.85) : 
                         p)
                 .collect(Collectors.toList());
     }
+    
 }
