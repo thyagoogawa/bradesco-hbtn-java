@@ -8,10 +8,8 @@ public class ConsultaPessoas {
 
         return pessoas.stream().collect(Collectors.groupingBy(
             Pessoa::getCargo,
-            Collectors.mapping(
-                pessoa -> pessoa,
-                Collectors.toList()
-            )));
+            Collectors.toList()
+        ));
 
     }
 }
