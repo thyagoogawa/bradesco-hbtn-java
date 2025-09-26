@@ -1,0 +1,56 @@
+import java.util.Locale;
+
+public class Pessoa implements Comparable<Pessoa> {
+
+    private int codigo;
+    private String nome;
+    private String cargo;
+    private int idade;
+    private double salario;
+
+    public Pessoa(int codigo, String nome, String cargo, int idade, double salario) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.cargo = cargo;
+        this.idade = idade;
+        this.salario = salario;
+    }
+
+    public int getCodigo() {
+        return this.codigo;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getCargo() {
+        return this.cargo;
+    }
+
+    public int getIdade() {
+        return this.idade;
+    }
+
+    public double getSalario() {
+        return this.salario;
+    }
+
+    /*
+     * Usa o Comparator da classe String, que já está implementado para processamento
+     * de ordem natural (alfabética).
+     */
+    @Override
+    public int compareTo(Pessoa pessoa) {
+        String thisNome = this.nome;
+        String pessoaNome = pessoa.getNome();
+        return thisNome.compareTo(pessoaNome);
+    }
+
+    @Override
+    public String toString() {
+        return String.format(new Locale("pt", "BR"), "[%d] %s %s %d R$ %f", 
+                this.codigo, this.nome, this.cargo, this.idade, this.salario);
+    }
+
+}
