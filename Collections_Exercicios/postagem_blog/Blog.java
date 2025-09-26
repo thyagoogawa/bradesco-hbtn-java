@@ -34,7 +34,7 @@ public class Blog {
 
     public Map<Categorias, Integer> obterContagemPorCategoria() { 
  
-        // O LinkedHashMap é ordenado pela ordem de inserção, pois ele utiliza a Double Linked List
+        // O LinkedHashMap eh ordenado pela ordem de insercao, pois ele utiliza a Double Linked List
         Map<Categorias, Integer> postagensPorCategoria = new LinkedHashMap<>(); 
 
         int postagens;
@@ -83,7 +83,7 @@ public class Blog {
 
     public Map<Categorias, Set<Post>> obterTodosPostsPorCategorias() {
 
-        // O LinkedHashMap é ordenado pela ordem de inserção, pois ele utiliza a Double Linked List
+        // O LinkedHashMap eh ordenado pela ordem de insercao, pois ele utiliza a Double Linked List
         Map<Categorias, Set<Post>> mapPostsPorCategorias = new LinkedHashMap<>();
         List<Categorias> categorias = Categorias.getCategorias();
 
@@ -97,7 +97,7 @@ public class Blog {
 
     public Map<Autor, Set<Post>> obterTodosPostsPorAutor() {
 
-        // O LinkedHashMap é ordenado pela ordem de inserção, pois ele utiliza a Double Linked List
+        // O LinkedHashMap eh ordenado pela ordem de insercao, pois ele utiliza a Double Linked List
         Map<Autor, Set<Post>> mapPostsPorAutor = new LinkedHashMap<>();
         Set<Autor> autores = obterTodosAutores();
 

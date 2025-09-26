@@ -1,4 +1,4 @@
-public class Post implements Comparable<Post> {
+public class Post  { // implements Comparable<Post>
 
     private Autor autor; 
     private String titulo; 
@@ -44,13 +44,18 @@ public class Post implements Comparable<Post> {
         this.categoria = categoria;
     }
 
+/* Nâo é nesessário implementar a interface Comparable e sobrescrever o método compareTo(),
+ * uma vez que o método Comparator.comparing() já tem uma definição para utilizar a ordem
+ * natural (alfabética) para classificar Strings.
+*/
+/*
     @Override
     public int compareTo(Post post) {
         int thisTituloCharAscii = this.titulo.charAt(0);
         int postTituloCharAscii = post.getTitulo().charAt(0);
         return Integer.compare(thisTituloCharAscii, postTituloCharAscii);
     }
-    
+*/
     @Override
     public String toString() {
         return this.titulo;
