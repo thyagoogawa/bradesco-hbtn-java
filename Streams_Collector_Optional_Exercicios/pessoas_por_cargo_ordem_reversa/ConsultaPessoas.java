@@ -13,14 +13,10 @@ public class ConsultaPessoas {
         return pessoas.stream()
             .collect(groupingBy(
                 Pessoa::getCargo, // Function
-                getTreeMap(), // Supplier -- new TreeMap(Comparator.comparing(Pessoa::getCargo))
+                () -> new TreeMap<>(Comparator.reverseOrder()), // Supplier -- () -> new TreeMap<>(Comparator.comparing(Pessoa::getCargo).reversed())
                 toCollection(TreeSet::new) // Collector
             )
         );
-    }
-
-    public static TreeMap getTreeMap() {
-        return new TreeMap(Comparator.comparing(Pessoa::getCargo).reversed());
     }
     
 }
