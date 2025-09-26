@@ -34,12 +34,6 @@ public class ConsultaPessoas {
         );
     }
 
-    /*
-     * obterContagemPessoasPorCargoEIdade: recebe uma lista de Pessoa que retorna 
-     * um Map<String, Map<Integer, Long>> que contém o nome do cargo como chave do 
-     * primeiro Map e um Map que possua a idade e quantidade de pessoas daquela idade 
-     * e daquele cargo.
-     */
     public static Map<String, Map<Integer, Long>> obterContagemPessoasPorCargoEIdade(List<Pessoa> pessoas) {
         return pessoas.stream()
             .collect(groupingBy(
