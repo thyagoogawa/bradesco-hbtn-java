@@ -36,11 +36,15 @@ public class Pessoa implements Comparable<Pessoa> {
         return this.salario;
     }
 
+    /*
+     * Usa o Comparator da classe String, que já está implementado para processamento
+     * de ordem natural (alfabética).
+     */
     @Override
     public int compareTo(Pessoa pessoa) {
-        int thisCargoAscii = this.getCargo().charAt(0);
-        int pessoaCargoAscii = pessoa.getCargo().charAt(0); // Faz a conversao impliscita do char para o ascii.
-        return Integer.compare(thisCargoAscii, pessoaCargoAscii);
+        String thisNome = this.nome;
+        String pessoaNome = pessoa.getNome();
+        return thisNome.compareTo(pessoaNome);
     }
 
     @Override

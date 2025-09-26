@@ -1,20 +1,24 @@
 import java.util.List;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.Collectors.toList;
 
 import java.util.Comparator;
 
 public class ConsultaPessoas {
 
-    public static TreeMap<String, TreeSet<Pessoa>> obterPessoasAgrupadasPorCargoEmOrdemReversa(List<Pessoa> pessoas) {
+    /*
+     * O TreeSet no Collector nao permite cargos repetidos na colecao, mostrando somente o
+     * primeiro cargo que ele encontra no stream.
+     */
+    public static TreeMap<String, List<Pessoa>> obterPessoasAgrupadasPorCargoEmOrdemReversa(List<Pessoa> pessoas) {
         return pessoas.stream()
+            .sorted(Comparator.naturalOrder())
             .collect(groupingBy(
                 Pessoa::getCargo, // Function
-                () -> new TreeMap<>(Comparator.reverseOrder()), // Supplier -- () -> new TreeMap<>(Comparator.comparing(Pessoa::getCargo).reversed())
-                toCollection(TreeSet::new) // Collector
+                () -> new TreeMap<>(Comparator.reverseOrder()), // Supplier 
+                toList() // Collector  
             )
         );
     }
