@@ -4,6 +4,7 @@ public class Contador {
 
     // Método sincronizado para garantir que o contador seja atualizado de maneira segura
     public synchronized void incrementar() {
+    //public void incrementar() {
         count++;
     }
 
