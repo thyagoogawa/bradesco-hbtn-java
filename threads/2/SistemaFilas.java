@@ -6,7 +6,7 @@ public class SistemaFilas {
     public static void main(String[] args) {
         
         Fila fila = new Fila();
-        List<Integer> sharedQueue = new LinkedList();
+        List<Integer> sharedQueue = new LinkedList<>();
 
         Produtor threadProdutor1 = new Produtor(fila, sharedQueue);
         Produtor threadProdutor2 = new Produtor(fila, sharedQueue);
@@ -19,6 +19,8 @@ public class SistemaFilas {
         
         threadConsumidor1.start();
         threadConsumidor2.start();
+
+        //System.exit(0);
 
     }
     
