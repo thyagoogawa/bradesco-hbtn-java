@@ -3,7 +3,7 @@ import java.util.List;
 
 public class SistemaFilas {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         
         Fila fila = new Fila();
         List<Integer> sharedQueue = new LinkedList<>();
@@ -20,7 +20,10 @@ public class SistemaFilas {
         threadConsumidor1.start();
         threadConsumidor2.start();
 
-        //System.exit(0);
+        Thread.sleep(20000); // Deixa a thread principal dormindo enquanto as suas sub-threads
+                             // continuam sua execucao paralela.
+        
+        System.exit(0);      // Encerra a thread principal, encerrando todas as sub-threads.
 
     }
     

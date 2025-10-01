@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 
 public class Produtor extends Thread {
     
@@ -13,9 +14,10 @@ public class Produtor extends Thread {
     @Override
     public void run() {
         try {
-            for (int i = 1; i <= 10000; i++) {
-                //adicionar(i);
-                fila.adicionar(i);  // O produtor coloca os itens no buffer
+            Random random = new Random();
+            while (true) {
+                //adicionar(random.nextInt());
+                fila.adicionar(random.nextInt());  // O produtor coloca os itens no buffer
                 Thread.sleep(500);   // Simula o tempo para produzir um item
             }
         } catch (InterruptedException e) {
